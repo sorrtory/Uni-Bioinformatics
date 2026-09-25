@@ -4,7 +4,8 @@ from io import TextIOWrapper
 
 from src.vectorize import vectorize
 
-def parse_input(kt):
+
+def parse_input(kt) -> list[list[str, str]]:
     kt = kt.split("\n>")
     answer = []
     for elem in kt:
@@ -13,16 +14,21 @@ def parse_input(kt):
         answer += [[key, value]]
     return answer
 
-def write(file_stream: TextIOWrapper, key: str, domains: dict, is_first: bool):
+
+def write(file_stream: TextIOWrapper, key: str, domains: dict, is_first: bool) -> None:
     string = (f'{'{' if is_first else ",\n"}'
               f'{f'"{key}"' if is_first else f'\t"{key}"'}'
               f':\n\t\t{str(domains).replace("'", '"')}')
     file_stream.write(string)
 
+
 def create_index(file: str, dir_path: str, part: int, amount: int) -> float:
     startind = time.time()
-    for filename in os.listdir(dir_path):
-        os.remove(f"{dir_path.rstrip("/")}/{filename}")
+    try:
+        for filename in os.listdir(dir_path):
+            os.remove(f"{dir_path.rstrip("/")}/{filename}")
+    except FileNotFoundError:
+        os.mkdir(dir_path)
     with open(file) as f:
         kt = f.read()
         entries = kt.count(">")

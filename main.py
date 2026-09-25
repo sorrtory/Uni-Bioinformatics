@@ -16,7 +16,8 @@ def main():
     print("Testing:")
     time3 = indexer.create_index("data/data-small.txt", "data/index_test/", parameters.PART, 1)
     test_data = correctness.test(answer, "data/index_test/index0.json")
-    print(test_data)
+    print(f"Hit in {test_data[0]}, that is {round(test_data[0] / test_data[1], 3)} accuracy")
+    print(f"Time to test:", time3)
 
 
 

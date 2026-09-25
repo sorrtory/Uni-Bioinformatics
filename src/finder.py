@@ -52,7 +52,7 @@ def find_pos(num: int) -> int:
 
 def find(index_folder_path: str, top: int, check:str, part: int) -> tuple[float, list]:
     global candid
-    count = 0
+    # count = 0
     start = time.time()
     check_vector = vectorize(check, part)
     cur_min = 10**10
@@ -60,10 +60,10 @@ def find(index_folder_path: str, top: int, check:str, part: int) -> tuple[float,
     for index_path in os.listdir(index_folder_path):
         with open(f"{index_folder_path}/{index_path}", mode="r") as f:
             data = json.load(f)
-            if (iterations // 100000) == 1:
-                print(100000 * count + iterations, time.time() - start)
-                iterations -= 100000
-                count += 1
+            #if (iterations // 100000) == 1:
+            #    print(100000 * count + iterations, time.time() - start)
+            #    iterations -= 100000
+            #    count += 1
             for key, item in data.items():
                 iterations += 1
                 diff = difference(check_vector, item, cur_min)
