@@ -7,4 +7,6 @@ def vectorize(seq: str, part: int) -> dict:
             domains[batch] = domains.get(batch, 0) + 1
             if len(batch) < part:
                 break
+    if '' in domains:
+        del domains['']
     return domains
