@@ -10,6 +10,15 @@
 - Федуков Александр
 - Родэ Михаил
 
+## Запуск
+
+```bash
+git clone https://github.com/sorrtory/Uni-Bioinformatics
+git lfs pull # pull the dataset, if git clone didn't
+python3 -m venv .venv && source .venv/bin/activate
+python main.py # slow: 40-90 sec + 80-200 sec
+```
+
 ## Вступление (Основная идея)
 
 Основная затея считать группы по N символов, сдвигая на 1 всегда.
